@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>@yield('title','Sekolah Ciputra Surabaya')</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{{ asset('bootstrap1/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('asset/fontawesome-free-6.7.2-web/css/all.min.css') }}">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+  <style>
+    body { font-family: 'Open Sans', sans-serif; }
+
+    /* Navbar Style */
+       .navbar {
+      transition: all .4s ease-in-out;
+    }
+    .navbar-transparent {
+      background: transparent !important;
+    }
+    .navbar-scrolled {
+      background: #fff !important;
+      box-shadow: 0 2px 8px rgba(0,0,0,.1);
+    }
+
+
+    .navbar-nav .nav-link {
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+        .navbar-nav .nav-link {
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    /* transparan ke putih */
+    .navbar-transparent .nav-link,
+    .navbar-transparent .navbar-brand {
+      color: #fff !important;
+    }
+    /* discroll ke hitam */
+    .navbar-scrolled .nav-link,
+    .navbar-scrolled .navbar-brand {
+      color: #000 !important;
+    }
+    /* Hover jadi hijau rumput */
+    .navbar-nav .nav-link:hover,
+    .navbar-brand:hover {
+      color: #1c8420 !important;
+    }
+
+    /* Hero Section */
+        .hero-header {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            color: #fff;
+            position: relative;
+            background-size: cover;
+            background-position: center;
+        }
+        .hero-header::before {
+            content:"";
+            position:absolute;
+            top:0;left:0;width:100%;height:100%;
+            background:rgba(0,0,0,.5);
+            z-index:1;
+        }
+        .hero-header-inner {
+            position: relative;
+            z-index: 2;
+        }
+
+    /* kepsek kata kata */
+    .about-images {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 10px;
+    }
+    .about-images img {
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      border-radius: .5rem;
+    }
+    .about-images img:first-child {
+      grid-row: span 2;
+    }
+           /* --- Area scroll --- */
+#scrollBox {
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+}
+#scrollContent {
+    display: inline-flex;
+    animation: scroll-left 25s linear infinite;
+}
+@keyframes scroll-left {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+/* berita */
+.card-news {
+    width: 350px;
+    margin: 0 1rem;
+    background: #fff;
+    border-radius: 1rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,.1);
+    overflow: hidden;
+}
+.card-news img {
+    height: 220px;
+    width: 100%;
+    object-fit: cover;
+}
+.card-body {padding:1.25rem;}
+.card-body small {color:#666;}
+.card-body h5 {font-weight:bold;margin-top:.5rem;}
+.berita-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.berita-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+.berita-card img {
+    transition: transform 0.5s ease;
+}
+.berita-card:hover img {
+    transform: scale(1.05);
+}
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav id="mainNav" class="navbar navbar-expand-lg fixed-top navbar-transparent">
+    <div class="container">
+      <a href="{{ route('user.home') }}" class="navbar-brand fw-bold">Sekolah <span class="text-success">Ciputra</span></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div id="nav" class="collapse navbar-collapse">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="{{ route('user.home') }}">Beranda</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ route('user.profile') }}">Profile</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ route('user.guru') }}">Guru</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ route('user.siswa') }}">Siswa</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ route('user.eskul') }}">Extrakuriller</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ route('user.album') }}">Album</a></li>
+          @if (Auth::check())
+            <li class="nav-item"><a class="nav-link" href="{{route('logout')}}">Logout</a></li>
+          @else
+            <a class="nav-button btn btn-success" href="{{ route('login') }}">Login</a>
+          @endif
+          @if (Auth::check())
+          @endif
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main -->
+  <main>
+    @yield('content')
+  </main>
+
+  <!-- Footer -->
+<footer class="text-white pt-5" style="background-color: #2b7444;">
+    <div class="container">
+        {{-- info --}}
+        <div class="row mb-4">
+            <div class="col-md-4 mb-4">
+                <div class="d-flex align-items-center mb-3">
+                    <img src="{{ asset('images/logo-smk.png') }}" alt="logo"
+                         style="width:50px" class="me-2">
+                    <h5 class="m-0 fw-bold">SMK YPC Tasikmalaya</h5>
+                </div>
+                <p><i class="fa fa-phone me-2 text-warning"></i>62265546717</p>
+                <p><i class="fa fa-fax me-2 text-warning"></i>62265546717</p>
+                <p><i class="fa fa-whatsapp me-2 text-warning"></i>08112224563</p>
+                <p><i class="fa fa-envelope me-2 text-warning"></i>
+                   smkypctasikmalaya@gmail.com</p>
+            </div>
+
+            <div class="col-md-2 mb-4">
+                <h5 class="fw-bold">Profil</h5>
+                <ul class="list-unstyled">
+                    <li><a href="#" class="text-white text-decoration-none">Tentang Kami</a></li>
+                    <li><a href="#" class="text-white text-decoration-none">Visi dan Misi</a></li>
+                    <li><a href="#" class="text-white text-decoration-none">Sejarah</a></li>
+                    <li><a href="#" class="text-white text-decoration-none">Sambutan Kepala</a></li>
+                    <li><a href="#" class="text-white text-decoration-none">Video</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 mb-4">
+                <h5 class="fw-bold">Alamat</h5>
+                <p class="mb-0">
+                    Jl. Raya Mangunreja No.73, Cikunten Singaparna<br>
+                    Tasikmalaya Jawa Barat 46414<br>Indonesia
+                </p>
+            </div>
+
+            <div class="col-md-3 mb-4">
+                <h5 class="fw-bold">Temukan Kami</h5>
+                <div class="d-flex gap-3 fs-4">
+                    <a href="#" class="text-white"><i class="fa fa-facebook"></i></a>
+                    <a href="#" class="text-white"><i class="fa fa-twitter"></i></a>
+                    <a href="#" class="text-white"><i class="fa fa-instagram"></i></a>
+                    <a href="#" class="text-white"><i class="fa fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <hr class="border-light">
+        <div class="d-flex flex-column flex-md-row
+                    justify-content-between align-items-center">
+            <p class="mb-2 mb-md-0">
+                Copyright © {{ date('Y') }} Sekolah Ciputra.
+            </p>
+            <ul class="nav">
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-white">Privacy Policy</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-white">Peta Situs</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-white">Kontak</a></li>
+            </ul>
+        </div>
+
+    </div>
+</footer>
+
+  <!-- Bootstrap JS -->
+  <script src="{{ asset('bootstrap1/js/bootstrap.bundle.min.js') }}"></script>
+  <!-- Navbar Scroll Script -->
+  <script>
+    window.addEventListener("scroll", function() {
+      const nav = document.getElementById("mainNav");
+      if (window.scrollY > 50) {
+        nav.classList.add("navbar-scrolled");
+        nav.classList.remove("navbar-transparent");
+      } else {
+        nav.classList.add("navbar-transparent");
+        nav.classList.remove("navbar-scrolled");
+      }
+    });
+ document.addEventListener("DOMContentLoaded", function(){
+    const box = document.getElementById("scrollBox");
+    const content = document.getElementById("scrollContent");
+    let step = 0.1;  // kecepatan
+    const interval = 5; // jeda
+
+    setInterval(function(){
+        box.scrollLeft += step;
+        // Jika sudah habis setengah konten, reset ke awal agar loop mulus
+        if (box.scrollLeft >= content.scrollWidth/2) {
+            box.scrollLeft = 0;
+        }
+    }, interval);
+});
+  </script>
+</body>
+</html>
