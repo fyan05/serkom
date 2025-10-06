@@ -63,11 +63,11 @@
             position:absolute;
             top:0;left:0;width:100%;height:100%;
             background:rgba(0,0,0,.5);
-            z-index:1;
+
         }
         .hero-header-inner {
             position: relative;
-            z-index: 2;
+
         }
 
     /* kepsek kata kata */
@@ -86,7 +86,7 @@
     .about-images img:first-child {
       grid-row: span 2;
     }
-           /* --- Area scroll --- */
+           /* --- Area scroll eskul --- */
 #scrollBox {
     overflow: hidden;
     white-space: nowrap;
@@ -99,6 +99,9 @@
 @keyframes scroll-left {
     0%   { transform: translateX(0); }
     100% { transform: translateX(-50%); }
+}
+#scrollBox:hover #scrollContent {
+    animation-play-state: paused;
 }
 /* berita */
 .card-news {
@@ -175,13 +178,13 @@
                 <div class="d-flex align-items-center mb-3">
                     <img src="{{ asset('images/logo-smk.png') }}" alt="logo"
                          style="width:50px" class="me-2">
-                    <h5 class="m-0 fw-bold">SMK YPC Tasikmalaya</h5>
+                    <h5 class="m-0 fw-bold">Sekolah Ciputra</h5>
                 </div>
                 <p><i class="fa fa-phone me-2 text-warning"></i>62265546717</p>
                 <p><i class="fa fa-fax me-2 text-warning"></i>62265546717</p>
                 <p><i class="fa fa-whatsapp me-2 text-warning"></i>08112224563</p>
                 <p><i class="fa fa-envelope me-2 text-warning"></i>
-                   smkypctasikmalaya@gmail.com</p>
+                   sekolahciputra@gmail.com</p>
             </div>
 
             <div class="col-md-2 mb-4">

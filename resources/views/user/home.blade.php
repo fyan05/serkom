@@ -1,6 +1,7 @@
 @extends('user.template')
 @section('content')
 <style>
+    /* efek bg guru */
 .parallax-section {
     background-image: linear-gradient(rgba(44, 130, 89, 0.55), rgba(44, 130, 89, 0.55)), url({{ asset('asset/foto/SCK-Makassar-1.jpg') }});
     background-attachment: fixed;   /* inti parallax */

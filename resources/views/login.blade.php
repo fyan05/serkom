@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>SDN LebakGede</title>
+    <title>Sekolah Ciputra</title>
     <link rel="stylesheet" href="{{ asset('bootstrap1/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('asset/fontawesome-free-6.7.2-web/css/all.min.css') }}">
     <style>
@@ -63,12 +63,12 @@
                     {{ session('message') }}
                 </div>
             @endif
-            {{-- <form action="{{ url('auth/warga') }}" method="POST"> --}}
+            <form action="{{ route('login.auth') }}" method="POST">
                 @csrf
                 <div class="d-flex justify-content-center mb-3">
                     <img src="{{ asset('asset/logo/logo-removebg-preview.png'   ) }}" alt="Logo" class="logo-img">
                 </div>
-                <h2 class="login-title text-center mb-4">Masuk SDN LebakGede</h2>
+                <h2 class="login-title text-center mb-4">Masuk Sekolah</h2>
                 <div class="mb-3">
                     <label for="username" class="form-label">Username</label>
                     <div class="input-group">
@@ -86,10 +86,12 @@
                 <div class="d-grid mt-4">
                     <button type="submit" class="btn btn-primary btn-block">Login</button>
                 </div>
+                <footer class="footer py-3 bg-light mt-auto">
+              <div class="container text-center">
+                  <span>&copy; {{ date('Y') }} Sekolah Ciputra Surabaya. Sekolah unggulan</span>
+              </div>
+          </footer>
             </form>
-            <div class="footer mt-4">
-                &copy; {{ date('Y') }} SDN LebakGede. Sekolah unggulan desa Margajaya
-            </div>
         </div>
     </div>
     <script src="{{ asset('bootstrap1/js/bootstrap.bundle.min.js') }}"></script>

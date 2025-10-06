@@ -4,7 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class berita extends Model
+class Berita extends Model
 {
     //
+    protected $guarded=[];
+        public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
 }

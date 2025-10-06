@@ -52,12 +52,6 @@
                             </a>
                         </li>
                         <li class="nav-item d-flex align-items-center">
-                            <a class="nav-link d-flex align-items-center" href="#">
-                                <i class="fas fa-user me-2" style="font-size: 1rem;"></i>
-                                User
-                            </a>
-                        </li>
-                        <li class="nav-item d-flex align-items-center">
                             <a class="nav-link d-flex align-items-center" href="{{ route('admin.siswa') }}">
                                 <i class="fas fa-users me-2" style="font-size: 1rem;"></i>
                                 Daftar Siswa
@@ -88,13 +82,7 @@
                             </a>
                         </li>
                         <li class="nav-item d-flex align-items-center">
-                            <a class="nav-link d-flex align-items-center" href="{{ route('admin.galeri') }}">
-                                <i class="fas fa-arrow-up me-2" style="font-size: 1rem;"></i>
-                                Galeri
-                            </a>
-                        </li>
-                        <li class="nav-item d-flex align-items-center">
-                            <a class="nav-link d-flex align-items-center" href="{{ route('admin.logout') }}">
+                            <a class="nav-link d-flex align-items-center" href="{{ route('admin.siswa') }}">
                                 <i class="fas fa-sign-out-alt me-2" style="font-size: 1rem;"></i>
                                 Logout
                             </a>
