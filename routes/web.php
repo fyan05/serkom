@@ -68,8 +68,7 @@ Route::middleware(['authadmin'])->group(function () {
     Route::get('/admin/galeri', [GaleriController::class, 'index'])->name('admin.galeri');
     Route::get('/admin/galeri/add', [GaleriController::class, 'add'])->name('admin.galeri.add');
     Route::post('/admin/galeri/store', [GaleriController::class, 'store'])->name('admin.galeri.store');
-    Route::get('/admin/galeri/edit/{id}', [GaleriController::class, 'edit'])->name('admin.galeri.edit');
-    Route::post('/admin/galeri/update/{id}', [GaleriController::class, 'update'])->name('admin.galeri.update');
+    Route::post('/admin/galeri/hapus/{id}', [GaleriController::class, 'delete'])->name('admin.galeri.hapus');
 
     //user
     Route::get('/admin/users', [UserController::class, 'index'])->name('users.index');
@@ -77,7 +76,7 @@ Route::middleware(['authadmin'])->group(function () {
     Route::post('/admin/users/store', [UserController::class, 'store'])->name('users.store');
     Route::get('/admin/users/edit/{id}', [UserController::class, 'edit'])->name('users.edit');
     Route::post('/admin/users/update/{id}', [UserController::class, 'update'])->name('users.update');
-    Route::post('/admin/users/delete/{id}', [UserController::class, 'destroy'])->name('users.delete');
+    Route::post('/admin/users/delete/{id}', [UserController::class, 'delete'])->name('users.delete');
 });
 
 Route::middleware(['authoperator'])->group(function () {

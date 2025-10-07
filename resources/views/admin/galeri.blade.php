@@ -23,9 +23,11 @@
                     <h5 class="card-title">{{ $galeri->judul }}</h5>
                     <p class="card-text">{{ $galeri->deskripsi }}</p>
                 </div>
-                <div class="card-footer">
-                    <a href="{{ route('admin.galeri.edit', $galeri->id) }}" class="btn btn-warning btn-sm">Edit</a>
-                </div>
+                  <form action="{{ route('admin.galeri.hapus',Crypt::encrypt($galeri->id))}}" method="POST" style="display:inline-block">
+                    @csrf
+                    <button type="submit" class="btn btn-sm btn-danger"
+                    onclick="return confirm('Yakin mau hapus?')">Hapus</button>
+                  </form>
             </div>
         </div>
         @endforeach
