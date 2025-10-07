@@ -47,7 +47,7 @@
                             <h5 class="card-title fw-semibold mb-1">{{ $berita->judul }}</h5>
                             <small class="text-muted d-block mb-2">
                                 {{ \Carbon\Carbon::parse($berita->tanggal)->format('d M Y') }}
-                                | by {{ $berita->user->name ?? 'Admin','operator' }}
+                                | by {{ $berita->user->name ?? 'Admin'??'Operator' }}
                             </small>
                             <p class="card-text text-secondary">{{ Str::limit($berita->isi, 100) }}</p>
                         </div>
@@ -89,7 +89,7 @@
                                 {{-- 🔸 Info tanggal dan penulis --}}
                                 <p class="text-muted mb-2">
                                     <i class="bi bi-calendar-event"></i> {{ \Carbon\Carbon::parse($berita->tanggal)->format('d M Y') }}
-                                    | <i class="bi bi-person-circle"></i> {{ $berita->user->name ?? 'Admin','operator' }}
+                                    | <i class="bi bi-person-circle"></i> {{ $berita->user->name ?? 'Admin'??'operator' }}
                                 </p>
 
                                 {{-- 🔸 Isi lengkap berita --}}

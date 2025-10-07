@@ -22,7 +22,12 @@
       background: #fff !important;
       box-shadow: 0 2px 8px rgba(0,0,0,.1);
     }
-
+    .navbar .container{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
 
     .navbar-nav .nav-link {
       font-weight: 500;
@@ -46,6 +51,15 @@
     .navbar-nav .nav-link:hover,
     .navbar-brand:hover {
     color: #2563eb !important;
+    }
+    .navbar-nav .nav-link:hover::after {
+      width: 60%;
+    }
+
+    /* Aktif (halaman yang sedang dikunjungi) */
+    .nav-link.active {
+      color: #2563eb !important;
+      font-weight: 700;
     }
 
     /* Hero Section */
@@ -86,6 +100,7 @@
     .about-images img:first-child {
       grid-row: span 2;
     }
+
            /* --- Area scroll eskul --- */
 #scrollBox {
     overflow: hidden;
@@ -140,19 +155,36 @@
   <!-- Navbar -->
   <nav id="mainNav" class="navbar navbar-expand-lg fixed-top navbar-transparent">
     <div class="container">
-      <a href="{{ route('user.home') }}" class="navbar-brand fw-bold">SMK YPC<span class="text-primary"> Tasikmalaya</span></a>
+      <a href="{{ route('user.home') }}" class="navbar-brand fw-bold">
+        SMK YPC<span class="text-primary"> Tasikmalaya</span>
+      </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
         <span class="navbar-toggler-icon"></span>
       </button>
+
       <div id="nav" class="collapse navbar-collapse">
         <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="{{ route('user.home') }}">Beranda</a></li>
-          <li class="nav-item"><a class="nav-link" href="{{ route('user.profile') }}">Profile</a></li>
-          <li class="nav-item"><a class="nav-link" href="{{ route('user.guru') }}">Guru</a></li>
-          <li class="nav-item"><a class="nav-link" href="{{ route('user.siswa') }}">Siswa</a></li>
-          <li class="nav-item"><a class="nav-link" href="{{ route('user.eskul') }}">Extrakuriller</a></li>
-          <li class="nav-item"><a class="nav-link" href="{{ route('user.galeri') }}">Galeri</a></li>
-          <li class="nav-item"><a class="nav-link" href="{{ route('user.berita') }}">Berita</a></li>
+          <li class="nav-item">
+            <a class="nav-link {{ request()->routeIs('user.home') ? 'active' : '' }}" href="{{ route('user.home') }}">Beranda</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {{ request()->routeIs('user.profile') ? 'active' : '' }}" href="{{ route('user.profile') }}">Profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {{ request()->routeIs('user.guru') ? 'active' : '' }}" href="{{ route('user.guru') }}">Guru</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {{ request()->routeIs('user.siswa') ? 'active' : '' }}" href="{{ route('user.siswa') }}">Siswa</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {{ request()->routeIs('user.eskul') ? 'active' : '' }}" href="{{ route('user.eskul') }}">Extrakurikuler</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {{ request()->routeIs('user.galeri') ? 'active' : '' }}" href="{{ route('user.galeri') }}">Galeri</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {{ request()->routeIs('user.berita') ? 'active' : '' }}" href="{{ route('user.berita') }}">Berita</a>
+          </li>
         </ul>
       </div>
     </div>
@@ -198,16 +230,6 @@
                     Jl. Raya Mangunreja No.73, Cikunten Singaparna<br>
                     Tasikmalaya Jawa Barat 46414<br>Indonesia
                 </p>
-            </div>
-
-            <div class="col-md-3 mb-4">
-                <h5 class="fw-bold">Temukan Kami</h5>
-                <div class="d-flex gap-3 fs-4">
-                    <a href="#" class="text-white"><i class="fa fa-facebook"></i></a>
-                    <a href="#" class="text-white"><i class="fa fa-twitter"></i></a>
-                    <a href="#" class="text-white"><i class="fa fa-instagram"></i></a>
-                    <a href="#" class="text-white"><i class="fa fa-youtube"></i></a>
-                </div>
             </div>
         </div>
 

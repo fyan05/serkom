@@ -50,9 +50,9 @@
     <div class="container hero-header-inner" style="background: rgba(0,0,0,0.4); border-radius: 10px; padding: 50px 20px;">
         <div class="row">
             <div class="col-12 col-lg-7 text-center text-lg-start text-white">
-                <h1 class="display-4 mb-3"></h1>
-                <p class="fs-5"></p>
-                <p class="mt-3"></p>
+                <h1 class="display-4 mb-3">Daftar Siswa</h1>
+                <p class="fs-5"> Generasi muda, semangat baru!</p>
+                <p class="mt-3">Inilah para siswa SMK YPC Tasikmalaya — kreatif, disiplin, dan berprestasi.</p>
             </div>
         </div>
     </div>

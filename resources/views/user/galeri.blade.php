@@ -44,10 +44,20 @@
 }
 </style>
 
-<div class="container py-5">
-    <h2 class="text-center mb-4 fw-bold">Galeri Sekolah</h2>
-
-    <div class="row g-4">
+<div id="home" class="container-fluid hero-header"
+     style="background: url('{{ asset('asset/foto/Quality Restoration-Ultra HD-welcomesmkypc-scaled.jpeg') }}') center center/cover no-repeat;">
+    <div class="container hero-header-inner" style="background: rgba(0,0,0,0.4); border-radius: 10px; padding: 50px 20px;">
+        <div class="row">
+            <div class="col-12 col-lg-7 text-center text-lg-start text-white">
+                <h1 class="display-4 mb-3">Galeri</h1>
+                <p class="fs-5">Dokumentasi visual kegiatan, prestasi, dan semangat kebersamaan.</p>
+                <p class="mt-3">Kami percaya bahwa setiap momen adalah bagian penting dari perjalanan kami. Lihat bagaimana kami tumbuh, belajar, dan berkreasi bersama</p>
+            </div>
+        </div>
+    </div>
+</div>
+    <div class="row g-4 p-5">
+          <h2 class="mb-4 text-center fw-bold">Daftar Galeri</h2>
         {{-- Looping semua data galeri --}}
         @foreach($albums as $galeri)
         <div class="col-6 col-md-4 col-lg-3">

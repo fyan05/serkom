@@ -103,8 +103,9 @@ class UserController extends Controller
     {
         $beritas = Berita::orderBy('tanggal','desc')->get(); // berita terbaru dulu
         $gurus = Guru::all();
+        $siswa = Siswa::all();
         $eskuls = eskul::all();
-        return view('user.home', compact('beritas','gurus','eskuls'));
+        return view('user.home', compact('beritas','gurus','eskuls','siswa'));
     }
 
     // Halaman daftar berita

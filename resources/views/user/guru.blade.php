@@ -42,9 +42,9 @@
     <div class="container hero-header-inner" style="background: rgba(0,0,0,0.4); border-radius: 10px; padding: 50px 20px;">
         <div class="row">
             <div class="col-12 col-lg-7 text-center text-lg-start text-white">
-                <h1 class="display-4 mb-3"></h1>
-                <p class="fs-5"></p>
-                <p class="mt-3"></p>
+                <h1 class="display-4 mb-3">Guru SMK YPC</h1>
+                <p class="fs-5"> Mendidik dengan ilmu, membimbing dengan iman.</p>
+                <p class="mt-3">    Guru SMK YPC Tasikmalaya menjadi teladan dalam membangun karakter dan keterampilan siswa menuju kesuksesan dunia dan akhirat.</p>
             </div>
         </div>
     </div>
@@ -52,6 +52,7 @@
 
 {{-- Bagian daftar guru --}}
 <div class="container py-5">
+      <h2 class="mb-4 text-center fw-bold">Daftar Guru</h2>
     <div class="row g-4">
         {{-- Looping data guru --}}
         @foreach($gurus as $g)

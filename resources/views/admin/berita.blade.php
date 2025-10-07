@@ -7,10 +7,10 @@
     {{-- 🔹 Header halaman --}}
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h2 class="fw-bold mb-0">
-            <i class="bi bi-megaphone-fill text-primary me-2"></i> Daftar Berita
+            <i class="fa fa-megaphone-fill text-primary me-2"></i> Daftar Berita
         </h2>
         <a href="{{ route('admin.berita.create') }}" class="btn btn-primary shadow-sm">
-            <i class="bi bi-plus-circle"></i> Tambah Berita
+            <i class="fa fa-plus-circle"></i> Tambah Berita
         </a>
     </div>
 
@@ -55,12 +55,12 @@
                         {{-- 🔸 Tombol Edit dan Hapus --}}
                         <div class="card-footer bg-white border-0 d-flex justify-content-between">
                             <a href="{{ route('admin.berita.edit', $berita->id) }}" class="btn btn-sm btn-warning">
-                                <i class="bi bi-pencil-square"></i> Edit
+                                <i class="fa fa-pencil-square"></i> Edit
                             </a>
                             <form action="{{ route('admin.berita.delete', $berita->id) }}" method="POST" onsubmit="return confirm('Yakin hapus berita ini?')">
                                 @csrf
                                 <button type="submit" class="btn btn-sm btn-danger">
-                                    <i class="bi bi-trash"></i> Hapus
+                                    <i class="fa fa-trash"></i> Hapus
                                 </button>
                             </form>
                         </div>
@@ -73,7 +73,7 @@
                         <div class="modal-content border-0 shadow-lg">
                             <div class="modal-header bg-primary text-white">
                                 <h5 class="modal-title" id="modalLabel{{ $berita->id }}">
-                                    <i class="bi bi-newspaper me-2"></i> {{ $berita->judul }}
+                                    <i class="fa fa-newspaper me-2"></i> {{ $berita->judul }}
                                 </h5>
                                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                             </div>
@@ -89,7 +89,7 @@
                                 {{-- 🔸 Info tanggal dan penulis --}}
                                 <p class="text-muted mb-2">
                                     <i class="bi bi-calendar-event"></i> {{ \Carbon\Carbon::parse($berita->tanggal)->format('d M Y') }}
-                                    | <i class="bi bi-person-circle"></i> {{ $berita->user->name ?? 'Admin' }}
+                                    | <i class="fa fa-person-circle"></i> {{ $berita->user->name ?? 'Admin' }}
                                 </p>
 
                                 {{-- 🔸 Isi lengkap berita --}}

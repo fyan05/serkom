@@ -41,9 +41,9 @@
     <div class="container hero-header-inner" style="background: rgba(0,0,0,0.4); border-radius: 10px; padding: 50px 20px;">
         <div class="row">
             <div class="col-12 col-lg-7 text-center text-lg-start text-white">
-                <h1 class="display-4 mb-3"></h1>
-                <p class="fs-5"></p>
-                    <p class="mt-3"></p>
+                <h1 class="display-4 mb-3">Daftar Ekstrakurikuler</h1>
+                <p class="fs-5">Beragam kegiatan pengembangan diri yang dirancang untuk menyalurkan minat dan bakat siswa</p>
+                    <p class="mt-3">Ekstrakurikuler tidak hanya memperkaya pengalaman belajar, tetapi juga membentuk karakter, kepemimpinan, dan kerja sama tim. Jelajahi pilihan yang tersedia dan jadilah bagian dari perjalanan inspiratif ini.</p>
             </div>
         </div>
     </div>
