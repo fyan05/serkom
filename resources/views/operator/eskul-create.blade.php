@@ -1,11 +1,11 @@
-@extends('admin.template')
+@extends('operator.template')
 @section('content')
 <div class="container">
     <h2>Tambah Ekstrakurikuler</h2>
     @if(session('success'))
         <div class="alert alert-success">{{ session('success') }}</div>
     @endif
-    <form action="{{ route('admin.ekstrakulikuler.store') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('operator.ekstrakulikuler.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="mb-3">
             <label>Nama Ekstrakurikuler</label>

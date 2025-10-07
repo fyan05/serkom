@@ -1,4 +1,4 @@
-@extends('admin.template')
+@extends('operator.template')
 @section('content')
    <div class="container">
         <h2>Tambah Guru</h2>
@@ -13,7 +13,7 @@
             </div>
         @endif
 
-        <form action="{{ route('admin.guru.store') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('operator.guru.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="mb-3">
                 <label>Nama Guru</label>

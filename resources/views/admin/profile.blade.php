@@ -3,9 +3,10 @@
 <div class="container">
     <h2 class="mb-3">Daftar Profile Sekolah</h2>
     <a href="{{ route('admin.profile.create') }}" class="btn btn-primary mb-3">Tambah Profile</a>
-
-    <table class="table table-bordered">
-        <thead class="table-dark">
+    <div class="bg-light p-3 rounded">
+    <div class="table-responsive min-vh-100">
+        <table id="example" class="table table-bordered w-100">
+        <thead class="table-light">
             <tr>
                 <th>No</th>
                 <th>Nama Sekolah</th>
@@ -43,6 +44,19 @@
                 </tr>
             @endforeach
         </tbody>
-    </table>
+        </table>
+  </div>
 </div>
+<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.4.1/js/dataTables.responsive.min.js"></script>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.4.1/css/responsive.dataTables.min.css">
+
+<script>
+$(document).ready(function() {
+    $('#example').DataTable({
+        responsive: true
+    });
+});
+</script>
 @endsection

@@ -3,7 +3,7 @@
 <style>
     /* efek bg guru */
 .parallax-section {
-    background-image: linear-gradient(rgba(44, 130, 89, 0.55), rgba(44, 130, 89, 0.55)), url({{ asset('asset/foto/SCK-Makassar-1.jpg') }});
+    background-image: linear-gradient(rgba(52, 120, 200, 0.55), rgba(52, 120, 200, 0.55)), url({{ asset('asset/foto/slide2.jpg') }});
     background-attachment: fixed;   /* inti parallax */
     background-position: center;
     background-repeat: no-repeat;
@@ -31,6 +31,60 @@
     background: #fff;
     border-radius: .5rem;
 }
+/* Card guru */
+.teacher-card {
+    height: 300px; /* bisa diubah sesuai kebutuhan */
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    cursor: pointer;
+}
+
+/* Hover card */
+.teacher-card:hover {
+    transform: translateY(-5px) scale(1.03);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+}
+
+/* Gambar guru */
+.teacher-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+/* Zoom gambar saat hover */
+.teacher-card:hover img {
+    transform: scale(1.05);
+}
+
+/* Overlay */
+.teacher-overlay {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.6); /* transparan gelap */
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Muncul saat hover */
+.teacher-card:hover .teacher-overlay {
+    opacity: 1;
+}
+
+/* Icon hover effect */
+.teacher-icons a {
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.teacher-icons a:hover {
+    transform: scale(1.2);
+    color: #ffc107; /* warna kuning saat hover */
+}
 </style>
   <div id="heroCarousel" class="carousel slide carousel-fade"
          data-bs-ride="carousel"
@@ -40,7 +94,7 @@
 
             <div class="carousel-item active">
                 <div class="container-fluid hero-header"
-                     style="background-image: url('{{ asset('asset/foto/YSIN0200-e1470191290176.jpg') }}');">
+                     style="background-image: url('{{ asset('asset/foto/Quality Restoration-Ultra HD-Heroweb-hariguru.jpeg') }}');">
                     <div class="container hero-header-inner d-flex align-items-center h-100">
                         <div class="row w-100">
                             <div class="col-12 col-lg-7 text-center text-lg-start">
@@ -65,7 +119,7 @@
 
             <div class="carousel-item">
                 <div class="container-fluid hero-header"
-                     style="background-image: url('{{ asset('asset/foto/slide3.jpg') }}');">
+                     style="background-image: url('{{ asset('asset/foto/Quality Restoration-Ultra HD-smks-ypc-tasikmalaya (1).jpeg') }}');">
                     <div class="container hero-header-inner d-flex align-items-center h-100">
                         <div class="row w-100">
                             <div class="col-12 col-lg-7 text-center text-lg-start">
@@ -97,20 +151,19 @@
     <div class="row g-4 g-md-5 align-items-center">
       <div class="col-12 col-md-6 mb-3 mb-md-0">
         <div class="about-images">
-          <img src="{{ asset('asset/foto/WhatsApp Image 2025-09-23 at 11.01.51_2501e16a.jpg') }}" class="img-fluid" alt="">
+          <img src="{{ asset('asset/foto/Foto-Kepala2-400x400.jpg') }}" class="img-fluid" alt="">
         </div>
       </div>
       <div class="col-12 col-md-6 about-text">
-        <h1 class="fs-6 fs-md-5 text-uppercase text-success"><b>Sambutan Kepala Sekolah</b></h1>
+        <h1 class="fs-6 fs-md-5 text-uppercase text-primary"><b>Sambutan Kepala Sekolah</b></h1>
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias minima quaerat recusandae doloremque quae,
-          natus, aliquid repudiandae reprehenderit accusantium aspernatur necessitatibus quo ab voluptatibus error?
-          Voluptatem magni hic iste aperiam quo, at temporibus ea voluptate ipsum provident error impedit, excepturi
-          inventore distinctio numquam sit ipsa dignissimos suscipit veritatis ad quam repellendus maiores molestias
-          aliquam. Reprehenderit, aspernatur. Expedita voluptatum, velit mollitia quibusdam aliquam in deserunt eligendi
-          fugiat modi quis, laborum consectetur quaerat maxime iusto labore vitae dolorum saepe sint harum consequatur.
-          Et, esse mollitia reiciendis, iure illo consequuntur voluptatum ratione nisi ducimus atque possimus tempora
-          quibusdam repellendus corporis, doloremque voluptate ut.
+          Assalamu’alaikum warahmatullahi wabarakatuh.
+
+          Selamat datang di website resmi Sekolah Ciputra. Kami berkomitmen untuk menjadi pusat keunggulan pendidikan di Indonesia, membekali siswa dengan pengetahuan, karakter, dan keterampilan abad 21. Melalui lingkungan belajar yang inspiratif, kami mendorong setiap peserta didik untuk meraih prestasi terbaik dan mengembangkan potensi diri secara optimal.
+
+          Terima kasih atas kepercayaan dan dukungan dari seluruh orang tua, guru, serta masyarakat. Mari bersama-sama kita wujudkan generasi penerus bangsa yang unggul, berakhlak mulia, dan siap menghadapi tantangan global.
+
+          Wassalamu’alaikum warahmatullahi wabarakatuh.
         </p>
       </div>
     </div>
@@ -118,7 +171,7 @@
 </div>
 
 {{-- Stats Section --}}
-<section class="py-5 text-white" style="background-color:#2b7444;">
+<section class="py-5 text-white" style="background-color: #205375;">
 <div class="container">
     <div class="row text-center">
         <div class="col-6 col-md-3 mb-4 mb-md-0">
@@ -141,22 +194,21 @@
 </div>
 </section>
 {{-- news --}}
-    <div class="container my-5">
-    <h2 class="mb-4 text-center" >Berita Terbaru</h2>
+<div class="container my-5">
+    <h2 class="mb-4 text-center">Berita Terbaru</h2>
     <div class="row g-4">
-        @foreach ($beritas as $berita)
+        @foreach ($beritas->take(6) as $berita) {{-- Ambil maksimal 6 --}}
             <div class="col-md-4">
-                <div class="card berita-card shadow-sm h-100">
+                <div class="card shadow-sm h-100">
                     <div class="position-relative overflow-hidden">
-                        <img src="{{ $berita['gambar'] }}" class="card-img-top" alt="{{ $berita['judul'] }}">
+                        <img src="{{ asset('storage/' . $berita->foto) }}" class="card-img-top object-fit-cover" alt="{{ $berita->judul }}" style="width:100%; height:220px; aspect-ratio: 4/3; object-fit: cover;">
                         <span class="badge bg-success position-absolute top-0 start-0 m-2 px-3 py-2">
-                            {{ $berita['tanggal'] }}
+                            {{ \Carbon\Carbon::parse($berita->tanggal)->format('d M Y') }}
                         </span>
                     </div>
                     <div class="card-body">
-                        <h5 class="card-title">{{ $berita['judul'] }}</h5>
-                        <p class="card-text text-muted">{{ Str::limit($berita['isi'],100) }}</p>
-                        <a href="#" class="btn btn-outline-success">Baca Selengkapnya</a>
+                        <h5 class="card-title">{{ $berita->judul }}</h5>
+                        <p class="card-text text-muted">{{ Str::limit($berita->isi,100) }}</p>
                     </div>
                 </div>
             </div>
@@ -164,112 +216,56 @@
     </div>
 </div>
 {{-- daftar guru --}}
-<div class="parallax-section py-5">
+<div class="parallax-section py-5" style="background: url('{{ asset('asset/bg-guru.jpg') }}') center/cover fixed no-repeat;">
     <div class="container text-center text-white mb-5">
         <h2 class="fw-bold mb-3">Daftar Guru</h2>
-        <p class="lead">Ciputra</p>
+        <p class="lead">SMK YPC Tasikmalaya</p>
     </div>
 
     <div class="container">
         <div class="row g-4">
-            @php
-                $guru = [
-                    [
-                        'nama'  => 'Dadan Romansyah, S.Pd., M.Ak.',
-                        'mapel'=> 'Sejarah',
-                        'foto'  => 'https://picsum.photos/id/1011/400/400'
-                    ],
-                    [
-                        'nama'  => 'Andri Aliraksa, S.Pd.',
-                        'mapel'=> 'Bahasa Indonesia',
-                        'foto'  => 'https://picsum.photos/id/1012/400/400'
-                    ],
-                    [
-                        'nama'  => 'Dewi Mariati, S.H., M.Ak.',
-                        'mapel'=> 'Pendidikan Pancasila dan Kewarganegaraan',
-                        'foto'  => 'https://picsum.photos/id/1013/400/400'
-                    ],
-                    [
-                        'nama'  => 'Jaenal, S.Pd.',
-                        'mapel'=> 'Sejarah Indonesia',
-                        'foto'  => 'https://picsum.photos/id/1014/400/400'
-                    ],
-                ];
-            @endphp
+            {{-- Looping data guru --}}
+            @foreach($gurus as $g)
+                <div class="col-md-4 col-lg-3">
+                    <div class="teacher-card position-relative overflow-hidden rounded">
+                        {{-- Foto guru --}}
+                        <img src="{{ asset('asset/foto/Quality Restoration-Ultra HD-slide2.jpeg') : 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=400&q=60' }}"
+                             alt="{{ $g->nama_guru }}" class="w-100 h-100 object-fit-cover">
 
-            @foreach ($guru as $g)
-                <div class="col-md-3 col-sm-6 d-flex justify-content-center">
-                    <div class="card shadow-sm border-0 h-100">
-                        <img src="{{ $g['foto'] }}" class="card-img-top" alt="Foto {{ $g['nama'] }}">
-                        <div class="card-body text-center">
-                            <h5 class="card-title fw-bold">{{ $g['nama'] }}</h5>
-                            <p class="card-text text-muted mb-0">{{ $g['mapel'] }}</p>
+                        {{-- Overlay muncul saat hover --}}
+                        <div class="teacher-overlay d-flex flex-column justify-content-center align-items-center text-center text-white">
+                            <h5 class="fw-bold">{{ $g->nama_guru }}</h5>
+                            <p>{{ $g->mapel }}</p>
+                            <div class="teacher-icons mt-2">
+                                <a href="#" class="text-white mx-2 fs-5"><i class="bi bi-envelope-fill"></i></a>
+                                <a href="#" class="text-white mx-2 fs-5"><i class="bi bi-telephone-fill"></i></a>
+                            </div>
                         </div>
                     </div>
                 </div>
             @endforeach
         </div>
-
-        <div class="text-center mt-4">
-            <a href="#" class="btn btn-success btn-lg px-4 rounded shadow">
-                Lihat Semua Guru
-            </a>
-        </div>
     </div>
 </div>
+
+
  {{-- extrakurikuler --}}
-  <div class="container my-5 justify-content-center">
+<div class="container my-5">
     <h2 class="mb-4 text-center">Extrakurikuler</h2>
     <div id="scrollBox">
-        @php
-            $eskul = [
-            [
-                'img'  => 'https://picsum.photos/id/237/400/250',
-                'time' => '27 September 2025',
-                'title'=> 'Ekskul Basket SMK YPC',
-                'body' => 'Kegiatan rutin latihan basket setiap hari Sabtu untuk meningkatkan skill dan kekompakan tim.'
-            ],
-            [
-                'img'  => 'https://picsum.photos/id/238/400/250',
-                'time' => '20 September 2025',
-                'title'=> 'Ekskul Paskibra',
-                'body' => 'Latihan baris-berbaris dan persiapan upacara bendera setiap minggu pagi.'
-            ],
-            [
-                'img'  => 'https://picsum.photos/id/239/400/250',
-                'time' => '18 September 2025',
-                'title'=> 'Ekskul Seni Musik',
-                'body' => 'Belajar memainkan alat musik band dan persiapan pentas seni sekolah.'
-            ],
-            [
-                'img'  => 'https://picsum.photos/id/240/400/250',
-                'time' => '10 September 2025',
-                'title'=> 'Ekskul Pramuka',
-                'body' => 'Kegiatan pramuka untuk melatih kemandirian dan jiwa kepemimpinan.'
-            ],
-            [
-                'img'  => 'https://picsum.photos/id/241/400/250',
-                'time' => '05 September 2025',
-                'title'=> 'Ekskul Futsal',
-                'body' => 'Latihan futsal setiap Rabu sore untuk persiapan turnamen antar sekolah.'
-            ],
-        ];
-        @endphp
         <div id="scrollContent">
-            @for($i=0;$i<2;$i++)
-                @foreach($eskul as $item)
-                    <div class="card card-news">
-                        <img src="{{ $item['img'] }}" alt="news">
-                        <div class="card-body">
-                            <small>{{ $item['time'] }}</small>
-                            <h5>{{ $item['title'] }}</h5>
-                            <p class="mb-2">{{ $item['body'] }}</p>
-                        </div>
+            @foreach($eskuls as $item) {{-- Ambil semua --}}
+                <div class="card card-news">
+                    <img src="{{ asset('storage/fotoextra/'.$item->foto) }}" alt="news">
+                    <div class="card-body">
+                        <small>{{ \Carbon\Carbon::parse($item->time)->format('d M Y') }}</small>
+                        <h5>{{ $item->title }}</h5>
+                        <p class="mb-2">{{ $item->body }}</p>
                     </div>
-                @endforeach
-            @endfor
+                </div>
+            @endforeach
         </div>
-        <a href="">lihat selengkapnya</a>
+        <a href="{{ route('user.eskul') }}">Lihat Selengkapnya</a>
     </div>
 </div>
 @endsection

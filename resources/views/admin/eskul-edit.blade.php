@@ -5,7 +5,7 @@
     @if(session('success'))
         <div class="alert alert-success">{{ session('success') }}</div>
     @endif
-    <form action="{{ route('admin.ekstrakulikuler.update', $eskul->id) }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('admin.ekstrakulikuler.update',Crypt::encrypt($eskul->id))  }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="mb-3">
             <label>Nama Ekstrakurikuler</label>
@@ -30,7 +30,7 @@
             @else
                 <small class="text-muted">Belum ada foto</small>
             @endif
-            <input type="file" name="foto" class="form-control mt-2">
+            <input type="file" name="gambar" class="form-control mt-2">
         </div>
         <button type="submit" class="btn btn-success">Update</button>
     </form>

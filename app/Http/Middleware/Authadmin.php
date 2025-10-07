@@ -21,7 +21,7 @@ class Authadmin
                 return $next($request);
             }
             else{
-                return redirect()->route('/');
+                return redirect()->route('login');
             }
         }
         else{

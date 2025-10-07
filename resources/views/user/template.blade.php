@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>@yield('title','Sekolah Ciputra Surabaya')</title>
+  <title>@yield('title','SMK YPC Tasikmalaya')</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="{{ asset('bootstrap1/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('asset/fontawesome-free-6.7.2-web/css/all.min.css') }}">
@@ -45,7 +45,7 @@
     /* Hover jadi hijau rumput */
     .navbar-nav .nav-link:hover,
     .navbar-brand:hover {
-      color: #1c8420 !important;
+    color: #2563eb !important;
     }
 
     /* Hero Section */
@@ -94,7 +94,7 @@
 }
 #scrollContent {
     display: inline-flex;
-    animation: scroll-left 25s linear infinite;
+    animation: scroll-left 15s linear infinite;/* kecepatan scroll diatur di sini */
 }
 @keyframes scroll-left {
     0%   { transform: translateX(0); }
@@ -140,7 +140,7 @@
   <!-- Navbar -->
   <nav id="mainNav" class="navbar navbar-expand-lg fixed-top navbar-transparent">
     <div class="container">
-      <a href="{{ route('user.home') }}" class="navbar-brand fw-bold">Sekolah <span class="text-success">Ciputra</span></a>
+      <a href="{{ route('user.home') }}" class="navbar-brand fw-bold">SMK YPC<span class="text-primary"> Tasikmalaya</span></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -151,14 +151,8 @@
           <li class="nav-item"><a class="nav-link" href="{{ route('user.guru') }}">Guru</a></li>
           <li class="nav-item"><a class="nav-link" href="{{ route('user.siswa') }}">Siswa</a></li>
           <li class="nav-item"><a class="nav-link" href="{{ route('user.eskul') }}">Extrakuriller</a></li>
-          <li class="nav-item"><a class="nav-link" href="{{ route('user.album') }}">Album</a></li>
-          @if (Auth::check())
-            <li class="nav-item"><a class="nav-link" href="{{route('logout')}}">Logout</a></li>
-          @else
-            <a class="nav-button btn btn-success" href="{{ route('login') }}">Login</a>
-          @endif
-          @if (Auth::check())
-          @endif
+          <li class="nav-item"><a class="nav-link" href="{{ route('user.galeri') }}">Galeri</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ route('user.berita') }}">Berita</a></li>
         </ul>
       </div>
     </div>
@@ -170,21 +164,21 @@
   </main>
 
   <!-- Footer -->
-<footer class="text-white pt-5" style="background-color: #2b7444;">
+<footer class="text-white pt-5" style="background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);">
     <div class="container">
         {{-- info --}}
         <div class="row mb-4">
             <div class="col-md-4 mb-4">
                 <div class="d-flex align-items-center mb-3">
-                    <img src="{{ asset('images/logo-smk.png') }}" alt="logo"
+                    <img src="{{ asset('asset/foto/images-removebg-preview.png') }}" alt="logo"
                          style="width:50px" class="me-2">
-                    <h5 class="m-0 fw-bold">Sekolah Ciputra</h5>
+                    <h5 class="m-0 fw-bold">Smk YPC Tasikmalaya</h5>
                 </div>
                 <p><i class="fa fa-phone me-2 text-warning"></i>62265546717</p>
                 <p><i class="fa fa-fax me-2 text-warning"></i>62265546717</p>
                 <p><i class="fa fa-whatsapp me-2 text-warning"></i>08112224563</p>
                 <p><i class="fa fa-envelope me-2 text-warning"></i>
-                   sekolahciputra@gmail.com</p>
+                   smkypctasikmalaya@gmail.com</p>
             </div>
 
             <div class="col-md-2 mb-4">
@@ -221,7 +215,7 @@
         <div class="d-flex flex-column flex-md-row
                     justify-content-between align-items-center">
             <p class="mb-2 mb-md-0">
-                Copyright © {{ date('Y') }} Sekolah Ciputra.
+                Copyright © {{ date('Y') }} SMK YPC.
             </p>
             <ul class="nav">
                 <li class="nav-item"><a href="#" class="nav-link px-2 text-white">Privacy Policy</a></li>

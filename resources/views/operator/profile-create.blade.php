@@ -1,4 +1,4 @@
-@extends('admin.template')
+@extends('operator.template')
 @section('content')
 <div class="container">
     <h2>Tambah Profile Sekolah</h2>
@@ -8,7 +8,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
     @endif
-    <form action="{{ route('admin.profile.create.post') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('operator.profile.create.post') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="mb-3">
     <label>Nama Sekolah</label>

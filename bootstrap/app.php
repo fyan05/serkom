@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Middleware\Authadmin;
+use App\Http\Middleware\Authoperator;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -14,7 +15,7 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware) {
         //
         $middleware->appendToGroup('authadmin', Authadmin::class);
-        $middleware->appendToGroup('authoperator', \App\Http\Middleware\Authoperator::class);
+        $middleware->appendToGroup('authoperator', Authoperator::class);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //

@@ -5,9 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Sekolah Ciputra</title>
+    <!-- Memuat file CSS Bootstrap -->
     <link rel="stylesheet" href="{{ asset('bootstrap1/css/bootstrap.min.css') }}">
+    <!-- Memuat file CSS FontAwesome -->
     <link rel="stylesheet" href="{{ asset('asset/fontawesome-free-6.7.2-web/css/all.min.css') }}">
     <style>
+        /* Styling untuk background dan komponen login */
         body {
             background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
             min-height: 100vh;
@@ -56,19 +59,25 @@
     </style>
 </head>
 <body>
+    <!-- Container utama, memposisikan form login di tengah layar -->
     <div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
         <div class="container login-container p-4">
+            <!-- Menampilkan pesan error jika ada session 'message' -->
             @if (session('message'))
                 <div class="alert alert-danger text-center mb-3">
                     {{ session('message') }}
                 </div>
             @endif
+            <!-- Form login -->
             <form action="{{ route('login.auth') }}" method="POST">
-                @csrf
+                @csrf <!-- Proteksi CSRF -->
+                <!-- Logo sekolah -->
                 <div class="d-flex justify-content-center mb-3">
-                    <img src="{{ asset('asset/logo/logo-removebg-preview.png'   ) }}" alt="Logo" class="logo-img">
+                    <img src="{{ asset('asset/foto/images-removebg-preview.png'   ) }}" alt="Logo" class="logo-img">
                 </div>
-                <h2 class="login-title text-center mb-4">Masuk Sekolah</h2>
+                <!-- Judul form -->
+                <h2 class="login-title text-center mb-4">Login</h2>
+                <!-- Input username -->
                 <div class="mb-3">
                     <label for="username" class="form-label">Username</label>
                     <div class="input-group">
@@ -76,6 +85,7 @@
                         <input type="text" name="username" id="username" class="form-control" required>
                     </div>
                 </div>
+                <!-- Input password -->
                 <div class="mb-3">
                     <label for="password" class="form-label">Password</label>
                     <div class="input-group">
@@ -83,17 +93,20 @@
                         <input type="password" name="password" id="password" class="form-control" required>
                     </div>
                 </div>
+                <!-- Tombol submit -->
                 <div class="d-grid mt-4">
                     <button type="submit" class="btn btn-primary btn-block">Login</button>
                 </div>
+                <!-- Footer -->
                 <footer class="footer py-3 bg-light mt-auto">
-              <div class="container text-center">
-                  <span>&copy; {{ date('Y') }} Sekolah Ciputra Surabaya. Sekolah unggulan</span>
-              </div>
-          </footer>
+                    <div class="container text-center">
+                        <span>&copy; {{ date('Y') }} SMK YPC Tasikmalaya. Sekolahnya para juara</span>
+                    </div>
+                </footer>
             </form>
         </div>
     </div>
+    <!-- Memuat file JS Bootstrap -->
     <script src="{{ asset('bootstrap1/js/bootstrap.bundle.min.js') }}"></script>
 </body>
 </html>

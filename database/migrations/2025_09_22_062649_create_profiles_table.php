@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('foto','100')->nullable();
             $table->string('npsn','10')->unique();
             $table->string('kontak','15');
-            $table->year('tahun_berdiri','4');
+            $table->year('tahun_berdiri');
             $table->text('deskripsi');
             $table->timestamps();
         });

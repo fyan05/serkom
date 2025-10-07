@@ -2,68 +2,166 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Berita;
+use App\Models\eskul;
+use App\Models\galeri;
+use App\Models\Guru;
+use App\Models\profile;
+use App\Models\Siswa;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    //
-    public function index(){
-        $beritas = [
-            [
-                'judul' => 'Surat Edaran Penerapan Jam Malam Bagi Peserta Didik',
-                'tanggal' => '19 September 2025',
-                'gambar' => 'https://picsum.photos/id/1015/800/500',
-                'isi' => 'Pemerintah Provinsi Jawa Barat melalui Dinas Pendidikan telah resmi mengeluarkan Surat Edaran...'
-            ],
-            [
-                'judul' => 'Penguatan Mental Siswa Menjelang Lomba',
-                'tanggal' => '13 Juni 2025',
-                'gambar' => 'https://picsum.photos/id/1011/800/500',
-                'isi' => 'Tasikmalaya, 9 Juni 2025 — Dalam rangka memberikan dukungan penuh kepada...'
-            ],
-            [
-                'judul' => 'Kunjungan Guru RPL SMK YPC Inovasi Mandiri',
-                'tanggal' => '28 April 2025',
-                'gambar' => 'https://picsum.photos/id/1025/800/500',
-                'isi' => 'Tasikmalaya, 23 April 2025 — Dalam rangka meningkatkan mutu pendidikan dan...'
-            ],
-            [
-                'judul' => 'SMK YPC Raih Juara Umum LKS Tingkat Kabupaten',
-                'tanggal' => '19 April 2025',
-                'gambar' => 'https://picsum.photos/id/1031/800/500',
-                'isi' => 'Kabupaten Tasikmalaya — Prestasi membanggakan kembali ditorehkan oleh SMK YPC setelah...'
-            ],
-            [
-                'judul' => 'Halal Bihalal SMK YPC Tasikmalaya 2025',
-                'tanggal' => '12 April 2025',
-                'gambar' => 'https://picsum.photos/id/1040/800/500',
-                'isi' => 'Tasikmalaya, 12 April 2025 — Suasana hangat penuh kekeluargaan mewarnai acara...'
-            ],
-            [
-                'judul' => 'Pembukaan Kegiatan Pesantren Ramadhan',
-                'tanggal' => '8 Maret 2025',
-                'gambar' => 'https://picsum.photos/id/1052/800/500',
-                'isi' => 'Tasikmalaya, 8 Maret 2025 — SMK YPC Tasikmalaya resmi membuka kegiatan...'
-            ],
-        ];
-        return view('user.home',compact('beritas'));
+    // ===============================
+    // ADMIN FUNCTION
+    // ===============================
+
+    // Menampilkan daftar semua user untuk admin
+    public function index()
+    {
+        $users = User::orderBy('id', 'DESC')->get(); // urut dari user terbaru
+        return view('admin.user', compact('users'));
     }
-    public function profile(){
-        return view('user.profile');
+
+    // Form tambah user baru
+    public function create()
+    {
+        return view('admin.user-create');
     }
-    public function guru(){
-        return view('user.guru');
+
+    // Simpan data user baru
+    public function store(Request $request)
+    {
+        // Validasi input
+        $request->validate([
+            'username' => 'required|max:30',
+            'password' => 'required|min:6',
+            'role' => 'required|in:admin,operator', // hanya boleh admin atau operator
+        ]);
+
+        // Simpan ke database, password harus di-hash
+        User::create([
+            'username' => $request->username,
+            'password' => bcrypt($request->password),
+            'role' => $request->role,
+        ]);
+
+        return redirect()->route('users.index')->with('success', 'User berhasil ditambahkan.');
     }
-    public function detail(){
-        return view('user.detailguru');
+
+    // Form edit user
+    public function edit($id)
+    {
+        $user = User::findOrFail($id); // jika tidak ada, tampil error 404
+        return view('admin.user-edit', compact('user'));
     }
-    public function siswa(){
-        return view('user.siswa');
+
+    // Update data user
+    public function update(Request $request, $id)
+    {
+        $user = User::findOrFail($id);
+
+        $data = $request->only(['username', 'role']);
+
+        // Jika password diisi, update juga
+        if ($request->filled('password')) {
+            $data['password'] = bcrypt($request->password);
+        }
+
+        $user->update($data);
+
+        return redirect()->route('users.index')->with('success', 'User berhasil diperbarui.');
     }
-    public function eskul(){
-        return view('user.eskul');
+
+    // Hapus user
+    public function destroy($id)
+    {
+        $user = User::findOrFail($id);
+        $user->delete();
+
+        return redirect()->route('users.index')->with('success', 'User berhasil dihapus.');
     }
-    public function album(){
-        return view('user.galeri');
+
+    // ===============================
+    // OPERATOR FUNCTION
+    // ===============================
+
+    // Menampilkan daftar user untuk operator
+    public function halaman()
+    {
+        $users = User::orderBy('id', 'DESC')->get();
+        return view('operator.user', compact('users'));
+    }
+
+    // ===============================
+    // USER/FRONTEND FUNCTION
+    // ===============================
+
+    // Halaman utama user (dashboard)
+    public function user()
+    {
+        $beritas = Berita::orderBy('tanggal','desc')->get(); // berita terbaru dulu
+        $gurus = Guru::all();
+        $eskuls = eskul::all();
+        return view('user.home', compact('beritas','gurus','eskuls'));
+    }
+
+    // Halaman daftar berita
+    public function berita()
+    {
+        $beritas = Berita::orderBy('tanggal','desc')->get();
+        return view('user.berita',compact('beritas'));
+    }
+
+    // Halaman profil sekolah
+    public function profile()
+    {
+        $profil = profile::first(); // ambil satu data profile
+        return view('user.profile', compact('profil'));
+    }
+
+    // Halaman daftar guru
+    public function guru()
+    {
+        $gurus = Guru::all();
+        return view('user.guru', compact('gurus'));
+    }
+
+    // Detail ekstrakurikuler
+    public function detail()
+    {
+        $id = request()->get('id'); // ambil id dari query string
+        $eskul = eskul::findOrFail($id);
+        return view('user.eskul-detail', compact('eskul'));
+    }
+
+    // Halaman daftar siswa
+    public function siswa()
+    {
+        $siswa = Siswa::all();
+        return view('user.siswa', compact('siswa'));
+    }
+
+    // Halaman daftar ekstrakurikuler
+    public function eskul()
+    {
+        $eskuls = eskul::all();
+        return view('user.eskul', compact('eskuls'));
+    }
+
+    // Halaman album galeri
+    public function album()
+    {
+        $data['albums']= galeri::all();
+        return view('user.galeri',$data);
+    }
+
+    // Detail galeri (foto/video)
+    public function dg()
+    {
+        $id = request()->get('id'); // ambil id dari query string
+        $galeri = galeri::findOrFail($id);
+        return view('user.galeri-detail', compact('galeri'));
     }
 }

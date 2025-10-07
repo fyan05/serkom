@@ -1,74 +1,115 @@
 @extends('admin.template')
 @section('content')
+
+{{-- Statistik singkat --}}
 <div class="row g-3 mb-4">
-    @csrf
     <div class="col-md-3">
         <div class="card shadow-sm text-center p-3">
             <i class="fa-solid fa-user-graduate fa-2x text-primary mb-2"></i>
-            <h4>35,000</h4>
+            <h4>{{ $siswa->count() }}</h4>
             <p>Total Students</p>
         </div>
     </div>
     <div class="col-md-3">
         <div class="card shadow-sm text-center p-3">
-            <i class="fa-solid fa-file-alt fa-2x text-success mb-2"></i>
-            <h4>19,050</h4>
-            <p>Total Exams</p>
+            <i class="fa-solid fa-chalkboard-teacher fa-2x text-success mb-2"></i>
+            <h4>{{ $guru->count() }}</h4>
+            <p>Total Teachers</p>
         </div>
     </div>
     <div class="col-md-3">
         <div class="card shadow-sm text-center p-3">
-            <i class="fa-solid fa-graduation-cap fa-2x text-warning mb-2"></i>
-            <h4>23,890</h4>
-            <p>Graduate Studies</p>
+            <i class="fa-solid fa-basketball-ball fa-2x text-warning mb-2"></i>
+            <h4>{{ $eks->count() }}</h4>
+            <p>Total Extracurriculars</p>
         </div>
     </div>
     <div class="col-md-3">
         <div class="card shadow-sm text-center p-3">
-            <i class="fa-solid fa-dollar-sign fa-2x text-danger mb-2"></i>
-            <h4>$21,020,50</h4>
-            <p>Total Income</p>
+            <i class="fa-solid fa-images fa-2x text-danger mb-2"></i>
+            <h4>{{ $galeri->count() }}</h4>
+            <p>Total Galleries</p>
         </div>
     </div>
 </div>
 
-{{-- Tabel My Students --}}
-<div class="card shadow-sm">
-    <div class="card-header d-flex justify-content-between align-items-center">
-        <h5 class="mb-0">My Students</h5>
-        <div class="d-flex">
-            <input type="text" class="form-control me-2" placeholder="Search by Name">
-            <button class="btn btn-primary"><i class="fa-solid fa-search"></i></button>
-        </div>
+{{-- Tabel Guru --}}
+<div class="card shadow-sm mb-4">
+    <div class="card-header">
+        <h5>Daftar Guru</h5>
     </div>
     <div class="table-responsive">
         <table class="table table-striped mb-0">
-            <thead class="table-light">
+            <thead>
                 <tr>
-                    <th>Roll</th><th>Photo</th><th>Name</th><th>Gender</th>
-                    <th>Class</th><th>Section</th><th>Parents</th>
-                    <th>Address</th><th>Date Of Birth</th><th>Phone</th><th>E-mail</th>
+                    <th>No</th>
+                    <th>Foto</th>
+                    <th>Nama</th>
+                    <th>Mata Pelajaran</th>
                 </tr>
             </thead>
             <tbody>
-                @for($i=1;$i<=10;$i++)
+                @foreach($guru as $index => $g)
                 <tr>
-                    <td>#{{sprintf("%04d",$i)}}</td>
-                    <td><img src="https://i.pravatar.cc/40?img={{$i}}" class="rounded-circle" alt=""></td>
-                    <td>Mark Willy</td>
-                    <td>Male</td>
-                    <td>2</td>
-                    <td>A</td>
-                    <td>Jack Sparrow</td>
-                    <td>TA-107 Newyork</td>
-                    <td>02/05/2001</td>
-                    <td>+123 9988568</td>
-                    <td>email@example.com</td>
+                    <td>{{ $index + 1 }}</td>
+                    <td>
+                        <img src="{{ $g->foto ? asset('storage/fotoguru/'.$g->foto) : 'https://i.pravatar.cc/40?img='.$index }}" class="rounded-circle" alt="" width="40" style="object-fit: cover; height: 40px;">
+                    </td>
+                    <td>{{ $g->nama_guru }}</td>
+                    <td>{{ $g->mapel }}</td>
                 </tr>
-                @endfor
+                @endforeach
             </tbody>
         </table>
     </div>
 </div>
+
+{{-- Tabel Siswa --}}
+<div class="card shadow-sm mb-4">
+    <div class="card-header">
+        <h5>Daftar Siswa</h5>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-striped mb-0">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Foto</th>
+                    <th>Nama</th>
+                    <th>Tahun Masuk</th>
+                    <th>Jenis Kelamin</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($siswa as $index => $s)
+                <tr>
+                    <td>{{ $index + 1 }}</td>
+                    <td>
+                        <img src="{{ $s->foto ? asset('storage/siswa/'.$s->foto) : 'https://i.pravatar.cc/40?img='.$index }}" class="rounded-circle" alt="" width="40">
+                    </td>
+                    <td>{{ $s->nama_siswa }}</td>
+                    <td>{{ $s->tahun_masuk }}</td>
+                    <td>{{ $s->jenis_kelamin }}</td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{{-- Daftar Ekstrakurikuler --}}
+<div class="card shadow-sm mb-4">
+    <div class="card-header">
+        <h5>Ekstrakurikuler</h5>
+    </div>
+    <div class="card-body">
+        <ul>
+            @foreach($eks as $e)
+            <li>{{ $e->nama_eskul }} - {{ $e->jadwal }}</li>
+            @endforeach
+        </ul>
+    </div>
+</div>
+
 
 @endsection

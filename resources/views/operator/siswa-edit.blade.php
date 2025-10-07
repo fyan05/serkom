@@ -1,10 +1,10 @@
-@extends('admin.template')
+@extends('operator.template')
 
 @section('content')
 <div class="container">
     <h2>Edit Data Siswa</h2>
 
-    <form action="{{ route('siswa.update', $siswa->id) }}" method="POST">
+    <form action="{{ route('operator.siswa.update', Crypt::encrypt($siswa->id)) }}" method="POST">
         @csrf
         <div class="mb-3">
             <label>NISN</label>
@@ -12,7 +12,7 @@
         </div>
         <div class="mb-3">
             <label>Nama Siswa</label>
-            <input type="text" name="nama" value="{{ $siswa->nama ?? $siswa->nama_siswa }}" class="form-control" required>
+            <input type="text" name="nama_siswa" value="{{ $siswa->nama ?? $siswa->nama_siswa }}" class="form-control" required>
         </div>
         <div class="mb-3">
             <label>Jenis Kelamin</label>

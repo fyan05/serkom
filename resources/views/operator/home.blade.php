@@ -1,4 +1,4 @@
-@extends('admin.template')
+@extends('operator.template')
 @section('content')
 <div class="row g-3 mb-4">
     @csrf

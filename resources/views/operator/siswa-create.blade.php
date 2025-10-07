@@ -1,10 +1,10 @@
-@extends('admin.template')
+@extends('operator.template')
 
 @section('content')
 <div class="container">
     <h2>Tambah Siswa</h2>
 
-    <form action="{{ route('siswa.store') }}" method="POST">
+    <form action="{{ route('operator.siswa.store') }}" method="POST">
         @csrf
         <div class="mb-3">
             <label>NISN</label>

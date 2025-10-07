@@ -1,4 +1,4 @@
-@extends('admin.template')
+@extends('operator.template')
 @section('content')
 <div class="container">
     <h2>Tambah Galeri</h2>
@@ -17,7 +17,7 @@
         </div>
     @endif
 
-    <form action="{{ route('galeri.store') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('operator.galeri.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="mb-3">
             <label>Judul</label>
@@ -29,7 +29,7 @@
         </div>
         <div class="mb-3">
             <label>Jenis</label>
-            <select name="jenis" class="form-select">
+            <select id="jenis" name="jenis" class="form-select">
                 <option value="">-- Pilih Jenis --</option>
                 <option value="foto" {{ old('jenis') == 'foto' ? 'selected' : '' }}>Foto</option>
                 <option value="video" {{ old('jenis') == 'video' ? 'selected' : '' }}>Video</option>
@@ -41,10 +41,6 @@
         </div>
         <div class="mb-3">
             <label>Foto</label>
-            <input type="file" name="foto" class="form-control">
-        </div>
-        <div class="mb-3">
-            <label>File (opsional)</label>
             <input type="file" name="file" class="form-control">
         </div>
         <button type="submit" class="btn btn-primary">Simpan</button>

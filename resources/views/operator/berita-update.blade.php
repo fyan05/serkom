@@ -1,8 +1,8 @@
-@extends('admin.template')
+@extends('operator.template')
 @section('content')
 <div class="container">
     <h2>Edit Berita</h2>
-    <form action="{{ route('admin.berita.update', $berita->id) }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('operator.berita.update', $berita->id) }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="mb-3">
             <label>Judul</label>
